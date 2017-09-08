@@ -1,0 +1,30 @@
+{% extends 'ui/_base.html' %}
+
+{% block title %}
+	Registrazione
+{% endblock%}
+
+{% block content %}
+
+<div class="col-md-6 col-md-offset-3">
+<form class="form" id='create_user_form' method="post" action="/user/createuser">
+	<center>
+		<h2> Registrazione</h2>
+	</center>
+	<h3 id="formError"></h3>
+	<div class="form-group">
+		<label>Username :</label>
+		<input class="form-control" type="text" name="username" id="username">
+	</div>
+	<div class="form-group">
+		<label>Password :</label>
+		<input class="form-control" type="password" name="password" id="password">
+	</div>
+	<center>
+		<button type="submit" class="btn btn-primary btn-lg" id="registrati">Registrati</button>
+	</center>
+</form>
+</div>
+
+<script type="text/javascript" src= "/static/ui/createuser.js"></script>
+{% endblock %}

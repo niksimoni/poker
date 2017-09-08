@@ -1,0 +1,130 @@
+
+{% extends 'ui/_base.html' %}
+
+{% block title %}
+    Sei Pokerista Se...
+{% endblock%}
+
+{% block content %}
+
+<script type="text/javascript" src= "/static/ui/ui.js"></script>
+
+
+<div class='blogList container'></div>
+
+
+<div id="create-blog-container">
+<br><br><br>
+    <center>
+        <button type="button" class="btn btn-primary create-blog-button">Create Post</button>
+    </center>
+    <div id="form-display">
+
+    </div>
+   
+</div>
+
+
+{% verbatim %}
+<script id="blog-li-template" type="text/template">
+    <div class="border well row  post post-{{pk}} col-md-3">
+        <center>
+            <img src="{{image}}" height="200" width="200"/>
+            <h3><a href="/post">{{title}}</a></h3>
+            <p>{{user}}</p>
+            <p>Posted on: <br>{{created_at}}</p> 
+        </center>
+    </div>
+</script>
+
+<!-- <script id="blog-li-template" type="text/template">
+    <div class="post post-{{pk}} col-md-4">
+     <div class="panel panel-default panel-primary">
+        <div class="panel-heading">
+        <h3><a href="/post">{{title}}</a></h3></div>
+        <ul class="list-group">
+        <li class="list-group-item">
+        <img src="{{image}}" height="100" width="100" /></li>
+         <li class="list-group-item">
+        <p>{{content}}</p> </li>
+         <li class="list-group-item">
+        <p>{{user}}</p></li>
+         <li class="list-group-item">
+        Posted on: <p>{{created_at}}</p> </li>
+
+         <li class="list-group-item">
+        <button type="button" class=" col-md-4 btn btn-primary update-blog-button" data-pk="{{pk}}">Update</button> 
+
+        <form  id='delete_blog_form'>
+            <input type="hidden" name="pk" value="{{pk}}">
+            <input class="btn btn-primary" type="submit" value='Delete'>
+        </form> 
+        </li>
+
+         <li class="list-group-item">
+        <ul class="commentList list-group">
+        </ul> 
+        </li>
+
+         <li class="list-group-item">
+        <form class='commentform' data-comment-type="post">
+            <input type="hidden" name="pk" value="{{pk}}">
+            <input type="text" name="content">
+            <input class="btn btn-info" type="submit" value="comment">
+        </form>
+        </li>
+    </div>
+    </div>
+</script>
+ -->
+<!-- 
+<script id="blog-li-comment" type="text/template">
+    {{#comments}}
+    <li class="post comment-{{pk}} list-group-item">
+        <p>{{content}}</p>
+        <form class='commentform' data-comment-type="comment">
+            <input type="hidden" name="pk" value="{{pk}}">
+            <input type="text" name="content">
+            <input class="btn btn-info" type="submit" value="comment">
+        </form>
+        <ul class="commentList list-group">
+        </ul>
+    </li>
+    {{/comments}}
+</script> -->
+
+<script id="update-blog-template" type="text/template">
+    <form class="form" id='create_blog_form'>
+    <div id="error-display"></div>
+    
+    <h2>Update Post Form</h2>
+    <h3 id="formError"></h3>
+    <label>Title: </label>
+    <input type="text" name="title" id="title" value="{{title}}">
+    <label>Content: </label>
+    <input type="text" name="content" id="content" value="{{content}}">
+    <input type="hidden" name="pk" value="{{pk}}">
+    <input class="btn btn-primary" type="submit" value="Update">
+    </form>
+</script>
+
+<script id="create-blog-template" type="text/template">
+   <form class="form" id='create_blog_form'>
+    <div id="error-display"></div>
+
+    <h2>Create Post Form</h2>
+    <h3 id="formError"></h3>
+    <label>Title: </label>
+    <input type="text" name="title" id="title">
+    <label>Image: </label>
+    <input type="file" name="image" accept="image/x-png,image/gif,image/jpeg"/>    
+    <label>Content: </label>
+    <input type="text" name="content" id="content">
+    <input class="btn btn-primary" type="submit" value="Create">
+</form>
+
+</script>
+
+
+{% endverbatim %}
+ {% endblock%}
