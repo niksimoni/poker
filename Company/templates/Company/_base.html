@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>{% block title%}{% endblock %}</title>
+	<script src="http://code.jquery.com/jquery-2.2.4.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.3.0/mustache.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+  <link href="/static/Company/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/static/Company/font-awesome.min.css">
+  <link rel="stylesheet" href="/static/Company/css/animate.css">
+  <link href="/static/Company/css/prettyPhoto.css" rel="stylesheet">
+  <link href="/static/Company/css/style.css" rel="stylesheet" />  
+  <style type="text/css">
+  a:hover{
+    color: #1BBD36;
+  }
+  </style>
+</head>
+<body>
+  <header>    
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+      <div class="navigation">
+        <div class="container">         
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse.collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <div class="navbar-brand">
+              <a href="/"><h1><span>Sei Poker</span>ista se...</h1></a>
+            </div>
+          </div>
+          
+          <div class="navbar-collapse collapse">              
+            <div class="menu">
+              <ul class="nav nav-tabs" role="tablist">
+                <li role="presentation"><a href="/" class="active">Home</a></li>
+                <li role="presentation"><a href="/poker">Poker</a></li>
+                <li role="presentation"><a href="/betting">Betting</a></li>               
+                <li role="presentation"><a href="/trading">Trading</a></li>
+                <li role="presentation"><a href="/storia">Storia</a></li>
+                <li role="presentation"><a href="/contact">Contattaci</a></li>            
+              </ul>
+            </div>
+          </div>            
+        </div>
+      </div>  
+    </nav>    
+  </header>
+
+
+<div>{% block content %}{% endblock %}</div>
+
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+        <center>
+          <h6>&copy; All Rights Reserved</h6>
+        </center>
+            <div class="credits">
+                <center>
+                    <h6>Sei Pokerista Se...</h6>
+                </center>
+             </div>
+        </div>
+      </div>    
+    </div>  
+  </footer>
+
+</body>
+</html>
+
+ 

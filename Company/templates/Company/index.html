@@ -1,0 +1,63 @@
+
+{% extends 'Company/_base.html' %}
+
+{% block title %}
+    Sei Pokerista Se...
+{% endblock%}
+
+{% block content %}
+
+<script type="text/javascript" src= "/static/ui/ui.js"></script>	
+
+<br><br>
+		
+	<div class="lates">
+		<div class="container">
+			<div class="text-center">
+				<h2>Ultimi articoli</h2>
+			</div>
+			<div class="blogList wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="300ms"></div>
+			{% verbatim %}
+			<script id="blog-li-template" type="text/template">
+				<div class="col-md-4">
+					<a href="/post?pk={{pk}}"><img src="{{image}}" height="200" width="350"/></a>
+					<h3><a href="/post?pk={{pk}}">{{title}}</a></h3>
+					<p>Posted on: {{created_at}}</p>
+				</div>
+			</script>
+			{% endverbatim %}
+		</div>
+	</div>
+
+	
+	<section id="partner">
+        <div class="container">
+            <div class="center wow fadeInDown">
+                <h2>I nostri partner</h2>
+                <p>Nel mondo del betting, del trading e principalmente del poker, nel corso degli anni abbiamo sviluppato rapporti con aziende importanti, che oggi vogliono sponsorizzarci</p>
+            </div>    
+
+            <div class="partners">
+                <ul>
+                    <li> <a href="#"><img class="img-responsive wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="300ms" src="static/Company/images/partners/partner1.png"></a></li>
+                    <li> <a href="#"><img class="img-responsive wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms" src="static/Company/images/partners/partner2.png"></a></li>
+                    <li> <a href="#"><img class="img-responsive wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="900ms" src="static/Company/images/partners/partner3.png"></a></li>
+                    <li> <a href="#"><img class="img-responsive wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="1200ms" src="static/Company/images/partners/partner4.png"></a></li>
+                    <li> <a href="#"><img class="img-responsive wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="1500ms" src="static/Company/images/partners/partner5.png"></a></li>
+                </ul>
+            </div>        
+        </div><!--/.container-->
+    </section><!--/#partner-->
+	
+	
+   <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+	<script src="/static/Company/js/jquery-2.1.1.min.js"></script>	
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="/static/Company/js/bootstrap.min.js"></script>
+	<script src="/static/Company/js/jquery.prettyPhoto.js"></script>
+    <script src="/static/Company/js/jquery.isotope.min.js"></script>  
+	<script src="/static/Company/js/wow.min.js"></script>
+	<script src="/static/Company/js/functions.js"></script>
+
+
+ {% endblock%}

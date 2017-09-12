@@ -1,0 +1,45 @@
+
+{% extends 'Company/_base.html' %}
+
+{% block title %}
+    Sei Pokerista Se...
+{% endblock%}
+
+{% block content %}
+
+<script type="text/javascript" src= "/static/ui/post.js"></script>
+
+<br><br>
+
+    <div class="lates">
+        <div class="container">
+            <div class="post wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="300ms"></div>
+            {% verbatim %}
+            <script id="post-template" type="text/template">
+                <div class="col-md-12">
+                    <center>
+                        <img src="{{image}}" height="400" width="600"/>
+                        <h2>{{title}}</h2>
+                        <p>{{content}}</p>
+                        <p>{{user}}</p>
+                        <p>Posted on: {{created_at}}</p>
+                    </center>
+                </div>
+            </script>
+            {% endverbatim %}
+        </div>
+    </div>
+
+    
+    
+   <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="/static/Company/js/jquery-2.1.1.min.js"></script>  
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="/static/Company/js/bootstrap.min.js"></script>
+    <script src="/static/Company/js/jquery.prettyPhoto.js"></script>
+    <script src="/static/Company/js/jquery.isotope.min.js"></script>  
+    <script src="/static/Company/js/wow.min.js"></script>
+    <script src="/static/Company/js/functions.js"></script>
+
+
+ {% endblock%}

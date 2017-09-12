@@ -10,6 +10,11 @@ urlpatterns = [
 	url(r'^$', views.Index.as_view(), name='ui'),
 	url(r'^createuser$', views.CreateUser.as_view(), name='createuser'),
 	url(r'^login$', views.Login.as_view(), name='login'),
+	url(r'^contact$', views.Contact.as_view(), name='contact'),
+	url(r'^poker$', views.Poker.as_view(), name='poker'),
+	url(r'^betting$', views.Betting.as_view(), name='betting'),
+	url(r'^trading$', views.Trading.as_view(), name='trading'),
+	url(r'^storia$', views.Storia.as_view(), name='storia'),
 	url(r'^(?P<post>(\w|\-)+)$', views.Post.as_view(), name='post'),
 ]  + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
      
