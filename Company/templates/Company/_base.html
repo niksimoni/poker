@@ -11,6 +11,7 @@
   <link rel="stylesheet" href="/static/Company/css/animate.css">
   <link href="/static/Company/css/prettyPhoto.css" rel="stylesheet">
   <link href="/static/Company/css/style.css" rel="stylesheet" />  
+  {% block style%}{% endblock %}
   <style type="text/css">
   a:hover{
     color: #1BBD36;
@@ -37,12 +38,12 @@
           <div class="navbar-collapse collapse">              
             <div class="menu">
               <ul class="nav nav-tabs" role="tablist">
-                <li role="presentation"><a href="/" class="active">Home</a></li>
-                <li role="presentation"><a href="/poker">Poker</a></li>
-                <li role="presentation"><a href="/betting">Betting</a></li>               
-                <li role="presentation"><a href="/trading">Trading</a></li>
-                <li role="presentation"><a href="/storia">Storia</a></li>
-                <li role="presentation"><a href="/contact">Contattaci</a></li>            
+                <li role="presentation"><a href="/" {% block active1 %}{% endblock %}>Home</a></li>
+                <li role="presentation"><a href="/poker" {% block active2 %}{% endblock %}>Poker</a></li>
+                <li role="presentation"><a href="/betting" {% block active3 %}{% endblock %}>Betting</a></li>               
+                <li role="presentation"><a href="/trading" {% block active4 %}{% endblock %}>Trading</a></li>
+                <li role="presentation"><a href="/storia" {% block active5 %}{% endblock %}>Storia</a></li>
+                <li role="presentation"><a href="/contact" {% block active6 %}{% endblock %}>Contattaci</a></li>            
               </ul>
             </div>
           </div>            

@@ -5,7 +5,16 @@
     Sei Pokerista Se...
 {% endblock%}
 
+{% block active1 %}
+    class="active"
+{% endblock%}
+
+{% block style %}
+      <link href="/static/Company/css/post.css" rel="stylesheet" />  
+{% endblock%}
+
 {% block content %}
+
 
 <script type="text/javascript" src= "/static/ui/post.js"></script>
 
@@ -30,9 +39,25 @@
         </div>
     </div>
 
+
+    <div class="commenti">
+    <br><br>
+        <div id="fb-root"></div>
+        <script>(function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+       js = d.createElement(s); js.id = id;
+       js.src = "//connect.facebook.net/it_IT/sdk.js#xfbml=1&version=v2.10&appId=607914096275636";
+       fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));</script>
+
+        <center>
+      <div class="fb-comments" data-href="http://www.seipokeristase.com/post?pk={{pk}}" data-numposts="7"></div>
+      </center>
+      <br><br>
+    </div>
     
-    
-   <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+   <!-- href da completare, per renderlo dinamico -->
     <script src="/static/Company/js/jquery-2.1.1.min.js"></script>  
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="/static/Company/js/bootstrap.min.js"></script>
