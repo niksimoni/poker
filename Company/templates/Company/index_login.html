@@ -1,0 +1,134 @@
+
+{% extends 'Company/_base.html' %}
+
+{% block title %}
+    Sei Pokerista Se...
+{% endblock%}
+
+{% block active1 %}
+    class="active"
+{% endblock%}
+
+{% block content %}
+
+<script type="text/javascript" src= "/static/ui/ui.js"></script>	
+
+<br><br>
+		
+	<div class="lates">
+		<div class="container">
+			<div class="text-center">
+				<h2>Ultimi articoli</h2>
+			</div>
+			<div class="blogList wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="300ms"></div>
+			{% verbatim %}
+			<script id="blog-li-template" type="text/template">
+				<div class="col-md-4">
+					<a href="/post?pk={{pk}}"><img src="{{image}}" height="250" width="350"/></a>
+					<center>
+					<h3><a href="/post?pk={{pk}}">{{title}}</a></h3>
+					<p>Posted on: {{created_at}}</p>
+					</center>
+					<button type="button" class=" btn btn-primary update-blog-button col-md-6" data-pk="{{pk}}">Update</button>
+					<form class="form" id='delete_post_form'>
+						<input type="hidden" name="pk" value="{{pk}}">
+						<input class="btn btn-danger col-md-6" type="submit" value='Delete' >
+					</form>
+					</div>
+				</div>
+			</script>
+			{% endverbatim %}
+		</div>
+	</div>
+
+
+ 	<div id="create-blog-container">
+ 	    <center>
+ 	        <button type="button" class="btn btn-primary create-blog-button">Create Post</button>
+ 	    </center>
+ 	    <br>
+ 	    <div id="form-display">
+ 	
+ 	    </div>
+ 	   <br><br><br>
+ 	</div>
+
+ 	{% verbatim %}
+ 	<script id="update-blog-template" type="text/template">
+ 		<div class="container">
+ 		<div class="well">
+ 	    <form class="form" id='update_blog_form'>
+ 	    <h2>Update Post Form</h2>
+	    <h3 id="formError"></h3>
+		<div class="form-group">
+ 	    <label style="color: #444;">Title: </label>
+ 	    <input class="form-control" type="text" name="title" id="title" value="{{title}}">
+ 	    </div>
+		<div class="form-group">
+ 	    <label style="color: #444;">Content: </label>
+ 	    <textarea class="form-control" type="text" name="content" id="content" value="{{content}}" rows="10"  />
+ 	    </div>
+ 	    <input type="hidden" name="pk" value="{{pk}}">
+ 	    <input class="btn btn-primary" type="submit" value="Update">
+ 	    </form>
+ 	    </div>
+ 	   </div>
+ 	</script>
+ 	{% endverbatim %}
+
+ 	<script id="create-blog-template" type="text/template">
+ 	<div class="container">
+ 	<div class="well">
+ 	   <form class="form" id='create_blog_form'>
+ 	    <h3 id="formError"></h3>
+		<div class="form-group">
+ 	    <label style="color: #444;">Title: </label>
+ 	    <input class="form-control" type="text" name="title" id="title">
+		</div>
+		<div class="form-group">
+ 	    <label style="color: #444;">Image: </label>
+ 	    <input class="form-control" type="file" name="image" accept="image/x-png,image/gif,image/jpeg"/>    
+		</div>
+		<div class="form-group">
+ 	    <label style="color: #444;">Content: </label>
+ 	    <textarea class="form-control" type="text" name="content" id="content" rows="10" />
+		</div>
+		<center>
+ 	    <input class="btn btn-success" type="submit" value="Create">
+ 	    </center>
+ 		</form>
+ 	   </div>
+ 	   </div>
+ 	
+ 	</script>
+	
+	<section id="partner">
+        <div class="container">
+            <div class="center wow fadeInDown">
+                <h2>I nostri partner</h2>
+                <p>Nel mondo del betting, del trading e principalmente del poker, nel corso degli anni abbiamo sviluppato rapporti con aziende importanti, che oggi vogliono sponsorizzarci</p>
+            </div>    
+
+            <div class="partners">
+                <ul>
+                    <li> <a href="#"><img class="img-responsive wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="300ms" src="static/Company/images/partners/partner1.png"></a></li>
+                    <li> <a href="#"><img class="img-responsive wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms" src="static/Company/images/partners/partner2.png"></a></li>
+                    <li> <a href="#"><img class="img-responsive wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="900ms" src="static/Company/images/partners/partner3.png"></a></li>
+                    <li> <a href="#"><img class="img-responsive wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="1200ms" src="static/Company/images/partners/partner4.png"></a></li>
+                    <li> <a href="#"><img class="img-responsive wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="1500ms" src="static/Company/images/partners/partner5.png"></a></li>
+                </ul>
+            </div>        
+        </div><!--/.container-->
+    </section><!--/#partner-->
+	
+	
+   <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="/static/Company/js/bootstrap.min.js"></script>
+	<script src="/static/Company/js/jquery.prettyPhoto.js"></script>
+    <script src="/static/Company/js/jquery.isotope.min.js"></script>  
+	<script src="/static/Company/js/wow.min.js"></script>
+	<script src="/static/Company/js/functions.js"></script>
+
+
+ {% endblock%}

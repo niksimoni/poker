@@ -6,6 +6,7 @@ $(document).ready(function(){
  	var pk = searchParams.get("pk");
 
 
+
 	var refreshPost = function refreshPost(){
 		$.get('/api/posts/' + pk, function(data){
 			$('.post').empty();
@@ -21,6 +22,7 @@ $(document).ready(function(){
  		//blogTemplate looks for HTML within this class,
  		// blog then says insert data into blog when funciton called
  	}
+
 
 	refreshPost();
 });

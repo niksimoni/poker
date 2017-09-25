@@ -81,7 +81,7 @@ class BlogDetailView(View):
 		}
 
 	
-	def get(self, request, post_pk):
+	def get(self, request, token, post_pk):
 		posts = [Post.objects.get(pk=post_pk)]
 		return JsonResponse(self._to_json(posts))
 
@@ -100,11 +100,36 @@ class BlogDetailView(View):
 			return JsonResponse(context, status=422)
 
 
-	def delete(self, request, post_pk, token):
+
+	def delete(self, request, token, post_pk):
 		userprofile = UserProfile.objects.get(token=token)
 		post = Post.objects.get(pk = post_pk, user = userprofile.user)
 		post.delete()
 		return JsonResponse({'pk': post.pk}) #pk not needed on index page
+
+
+class DetailView(View):
+	form_class = PostForm
+
+	def _to_json(self, posts):
+		return {
+			'posts': [{
+				'pk': post.pk,
+				'title': post.title,
+				'image': post.image.url,
+				'content': post.content,
+				'user': post.user.username,
+				'created_at': unix_timezone(post.created_at),
+			} for post in posts]
+		}
+
+	
+	def get(self, request, post_pk):
+		posts = [Post.objects.get(pk=post_pk)]
+		return JsonResponse(self._to_json(posts))
+
+
+	
 
 
 class BlogPostComments(View):
@@ -140,6 +165,7 @@ class BlogPostComments(View):
 		else:
 			context = {'CommentForm' : form.errors.as_json()}
 			return JsonResponse(context, status=422)
+
 
 class CommentDetail(View):
 

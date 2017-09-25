@@ -17,6 +17,7 @@
 
 
 <script type="text/javascript" src= "/static/ui/post.js"></script>
+<script type="text/javascript" language="javascript">jQuery(“#FC”).attr(“data-href”, window.location.href.split(‘?’)[0]);</script>
 
 <br><br>
 
@@ -42,6 +43,9 @@
 
     <div class="commenti">
     <br><br>
+        <center>
+        <div id="FC" class="fb-comments" data-href="" data-numposts="7" ></div>
+      </center>
         <div id="fb-root"></div>
         <script>(function(d, s, id) {
         var js, fjs = d.getElementsByTagName(s)[0];
@@ -50,10 +54,6 @@
        js.src = "//connect.facebook.net/it_IT/sdk.js#xfbml=1&version=v2.10&appId=607914096275636";
        fjs.parentNode.insertBefore(js, fjs);
         }(document, 'script', 'facebook-jssdk'));</script>
-
-        <center>
-      <div class="fb-comments" data-href="http://www.seipokeristase.com/post?pk={{pk}}" data-numposts="7"></div>
-      </center>
       <br><br>
     </div>
     

@@ -2,10 +2,13 @@ from django.shortcuts import render, redirect
 from django.views import View
 from api.forms import PostForm
 
+
 class Index(View):
-	template = 'Company/index.html'
+	template = 'Company/index_login.html'
 
 	def get(self, request):
+		if not request.user.is_authenticated():
+			return redirect("Company:index")
 		return render(request, self.template)
 
 class Post(View):

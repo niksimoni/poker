@@ -13,6 +13,7 @@ $(document).ready(function(){
 			success: function(data){
 				$.cookie('userToken', data['token']);
 				window.location.pathname = "/";
+
 			},
 			error: function(data){
 				alert('Qualcosa è andato storto');
