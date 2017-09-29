@@ -6,7 +6,7 @@ from django.contrib.auth import authenticate, login
 from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_required
 from django.utils import timezone
-from api.models import Post
+from api.models import Post, Message
 from api.forms import PostForm, UserForm, CommentForm
 from users.models import UserProfile
 from api.models import Comment
@@ -26,6 +26,7 @@ class BlogCollectionView(View):
 				'title': post.title,
 				'image': post.image.url,
 				'content': post.content,
+				'subject': post.subject,
 				'user': post.user.username,
 				'created_at': unix_timezone(post.created_at),
 			} for post in posts]
@@ -34,8 +35,137 @@ class BlogCollectionView(View):
 	
 	def get(self, request):
 		posts = Post.objects.all()
+		return JsonResponse(self._to_json(list(reversed(posts))))
+
+
+class Poker(View):
+	
+	def _to_json(self, posts):
+		return {
+			'posts': [{
+				'pk': post.pk,
+				'title': post.title,
+				'image': post.image.url,
+				'content': post.content,
+				'subject': post.subject,
+				'user': post.user.username,
+				'created_at': unix_timezone(post.created_at),
+			} for post in posts]
+		}
+
+	
+	def get(self, request):
+		postss = Post.objects.filter(subject='poker')
+		posts = list(reversed(postss))
+		return JsonResponse(self._to_json(posts[0:6]))
+
+class Betting(View):
+	
+	def _to_json(self, posts):
+		return {
+			'posts': [{
+				'pk': post.pk,
+				'title': post.title,
+				'image': post.image.url,
+				'content': post.content,
+				'subject': post.subject,
+				'user': post.user.username,
+				'created_at': unix_timezone(post.created_at),
+			} for post in posts]
+		}
+
+	
+	def get(self, request):
+		postss = Post.objects.filter(subject='betting')
+		posts = list(reversed(postss))
+		return JsonResponse(self._to_json(posts[0:6]))
+
+
+class Trading(View):
+	
+	def _to_json(self, posts):
+		return {
+			'posts': [{
+				'pk': post.pk,
+				'title': post.title,
+				'image': post.image.url,
+				'content': post.content,
+				'subject': post.subject,
+				'user': post.user.username,
+				'created_at': unix_timezone(post.created_at),
+			} for post in posts]
+		}
+
+	
+	def get(self, request):
+		postss = Post.objects.filter(subject='trading')
+		posts = list(reversed(postss))
+		return JsonResponse(self._to_json(posts[0:6]))
+
+
+class FullPoker(View):
+	
+	def _to_json(self, posts):
+		return {
+			'posts': [{
+				'pk': post.pk,
+				'title': post.title,
+				'image': post.image.url,
+				'content': post.content,
+				'subject': post.subject,
+				'user': post.user.username,
+				'created_at': unix_timezone(post.created_at),
+			} for post in posts]
+		}
+
+	
+	def get(self, request):
+		postss = Post.objects.filter(subject='poker')
+		posts = list(reversed(postss))
 		return JsonResponse(self._to_json(posts))
 
+class FullBetting(View):
+	
+	def _to_json(self, posts):
+		return {
+			'posts': [{
+				'pk': post.pk,
+				'title': post.title,
+				'image': post.image.url,
+				'content': post.content,
+				'subject': post.subject,
+				'user': post.user.username,
+				'created_at': unix_timezone(post.created_at),
+			} for post in posts]
+		}
+
+	
+	def get(self, request):
+		postss = Post.objects.filter(subject='betting')
+		posts = list(reversed(postss))
+		return JsonResponse(self._to_json(posts))
+
+
+class FullTrading(View):
+	
+	def _to_json(self, posts):
+		return {
+			'posts': [{
+				'pk': post.pk,
+				'title': post.title,
+				'image': post.image.url,
+				'content': post.content,
+				'subject': post.subject,
+				'user': post.user.username,
+				'created_at': unix_timezone(post.created_at),
+			} for post in posts]
+		}
+
+	
+	def get(self, request):
+		postss = Post.objects.filter(subject='trading')
+		posts = list(reversed(postss))
+		return JsonResponse(self._to_json(posts))
 
 class CreatePost(View):
 	form_class = PostForm
@@ -54,6 +184,7 @@ class CreatePost(View):
 					'title': post.title,
 					'image': post.image.url,
 					'content': post.content,
+					'subject': post.subject,
 					'user': post.user.username,
 					'created_at': unix_timezone(post.created_at),
 				}
@@ -65,6 +196,50 @@ class CreatePost(View):
 			return JsonResponse(context, status=422)
 	
 
+
+
+class Messages(View):
+	
+
+	def get(self, request):
+		all_messages = Message.objects.all()
+		return JsonResponse(self.__serialize2(list(reversed(all_messages))))
+
+
+	def __serialize2(self, messages):
+		return {
+			'messages': [{
+				"name": message.name,
+				"email": message.email,
+				"subject": message.subject,
+				"message": message.message,
+				"date":message.created_at,
+			
+			} for message in messages]
+		}
+		
+
+	def __serialize(self, data):
+		return {
+			"name": data['name'],
+			"email": data['email'],
+			"subject": data['subject'],
+			"message": data['message']
+		}
+
+	def post(self, request):
+		data = json.loads(request.body.decode())
+		new_message = Message.objects.create(
+			name = data['name'],
+			email = data['email'],
+			subject = data['subject'],
+			message = data['message']
+
+		)
+		return JsonResponse(self.__serialize(data))
+	
+
+
 class BlogDetailView(View):
 	form_class = PostForm
 
@@ -75,6 +250,7 @@ class BlogDetailView(View):
 				'title': post.title,
 				'image': post.image.url,
 				'content': post.content,
+				'subject': post.subject,
 				'user': post.user.username,
 				'created_at': unix_timezone(post.created_at),
 			} for post in posts]
@@ -118,6 +294,7 @@ class DetailView(View):
 				'title': post.title,
 				'image': post.image.url,
 				'content': post.content,
+				'subject': post.subject,
 				'user': post.user.username,
 				'created_at': unix_timezone(post.created_at),
 			} for post in posts]

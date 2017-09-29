@@ -2,12 +2,15 @@
 	 background:#eee;
 }
 
-hr {
-    margin-top: 20px;
-    margin-bottom: 20px;
-    border: 0;
-    border-top: 1px solid #FFFFFF;
+hr
+{
+margin-left: 10%;
+margin-right: 10%;
+color: black;
+background-color: black;
+height: 3px;
 }
+
 .links {
     color: #82b440;
     text-decoration: none;

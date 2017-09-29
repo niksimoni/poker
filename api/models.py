@@ -14,6 +14,7 @@ class Post(models.Model):
 	slug = models.SlugField(max_length =50)
 	created_at = models.DateTimeField(auto_now_add = True)
 	updated_at = models.DateTimeField(auto_now = True )
+	subject = models.CharField(max_length =30)
 	tags = GenericRelation('api.TaggedItem', related_query_name="post_set")
 	comments = GenericRelation('api.Comment', related_query_name="comment_set")
 
@@ -33,4 +34,10 @@ class Comment(models.Model):
 	content_object = GenericForeignKey('content_type', 'object_id')	
 	comments = GenericRelation('api.Comment', related_query_name="comment_set")
 
+class Message(models.Model):
+	name = models.TextField()
+	email = models.EmailField(max_length=254)
+	subject = models.TextField()
+	message = models.TextField()
+	created_at = models.DateTimeField(auto_now = True)
 

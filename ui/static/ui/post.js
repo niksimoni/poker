@@ -17,12 +17,11 @@ $(document).ready(function(){
 	};
 
  	var addPost = function addPost(post) {
- 		post.created_at = moment(post.created_at).fromNow()
+ 		post.created_at = moment(post.created_at).fromNow();
  		$('.post').append(Mustache.render(postTemplate, post));
  		//blogTemplate looks for HTML within this class,
  		// blog then says insert data into blog when funciton called
- 	}
-
+ 	};
 
 	refreshPost();
 });

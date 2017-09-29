@@ -8,7 +8,7 @@ class Index(View):
 
 	def get(self, request):
 		if not request.user.is_authenticated():
-			return redirect("Company:index")
+			return render(request, 'Company/index.html')
 		return render(request, self.template)
 
 class Post(View):

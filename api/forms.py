@@ -9,7 +9,7 @@ from api.models import Post, Comment
 class PostForm(ModelForm):
 	class Meta:
 		model = Post
-		fields = ['title', 'image', 'content']
+		fields = ['title', 'image', 'content', 'subject']
  
 
 

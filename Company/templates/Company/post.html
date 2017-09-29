@@ -10,12 +10,12 @@
 {% endblock%}
 
 {% block style %}
-      <link href="/static/Company/css/post.css" rel="stylesheet" />  
+      <link href="/static/Company/css/post.css" rel="stylesheet" /> 
 {% endblock%}
 
 {% block content %}
 
-
+<script type="text/javascript" src= "/static/ui/post2.js"></script>
 <script type="text/javascript" src= "/static/ui/post.js"></script>
 <script type="text/javascript" language="javascript">jQuery(“#FC”).attr(“data-href”, window.location.href.split(‘?’)[0]);</script>
 
@@ -32,13 +32,34 @@
                         <h2>{{title}}</h2>
                         <p>{{content}}</p>
                         <p>{{user}}</p>
+                        <p>{{subject}}</p>
                         <p>Posted on: {{created_at}}</p>
                     </center>
+                    <br><br><br>
+                </div>
+            </script>
+            {% endverbatim %}
+
+         <center>
+            <h3>Articoli Correlati</h3><br><br>
+            </center>
+            <div class="blogList wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="300ms"></div>
+            {% verbatim %}
+            <script id="blog-li-template" type="text/template">
+                <div class="col-md-4">
+                <center>
+                    <a href="/post?pk={{pk}}&subject={{subject}}"><img src="{{image}}" height="150" width="250"/></a>
+                    <h3><a href="/post?pk={{pk}}&subject={{subject}}">{{title}}</a></h3>
+                    <p>Posted on: {{created_at}}</p>
+                </center>
                 </div>
             </script>
             {% endverbatim %}
         </div>
     </div>
+
+
+
 
 
     <div class="commenti">
